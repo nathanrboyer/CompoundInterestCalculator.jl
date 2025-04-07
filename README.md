@@ -1,8 +1,10 @@
 # Compound Interest Calculator
 
-A [notebook](https://plutojl.org/) for solving the compound interest equation
-(including both initial and recurring deposits).
-It can solve for any variable in the equation.
+A [Pluto notebook](https://plutojl.org/) for solving the compound interest equation,
+including both initial ($P$) and recurring ($A$) deposits.
+It can solve for any variable in the equation ($F, P, A, r, n, t$).
+
+$$F = P \cdot \left( 1 + \frac{r}{100 \cdot n} \right)^{n \cdot t} + \frac{A \cdot \left( \left( 1 + \frac{r}{100 \cdot n} \right)^{n \cdot t} - 1 \right)}{\frac{r}{100 \cdot n}}$$
 
 
 **[CLICK HERE](https://nathanrboyer.github.io/CompoundInterestCalculator.jl/)**

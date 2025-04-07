@@ -1,11 +1,11 @@
 ### A Pluto.jl notebook ###
-# v0.20.4
+# v0.20.5
 
 using Markdown
 using InteractiveUtils
 
 # ╔═╡ 95d6d66b-b1c7-4fd3-8586-a6ec3d3ae94a
-using ModelingToolkit, NonlinearSolve, Chain, Plots, Format
+using ModelingToolkit, NonlinearSolve, Chain, Plots, Format, Latexify
 
 # ╔═╡ 3aa0bcc0-16e1-11ef-1385-e131b549bcb3
 md"# Inputs"
@@ -24,8 +24,8 @@ md"# Compound Interest Equation"
 
 # ╔═╡ d28cd3c1-b5cd-4948-9610-d026e94fc4dc
 vars = Dict(
-    P => 0,  # Initial Fund Value
-	A => 77,      # Recurring Contribution
+    P => 500,     # Initial Fund Value
+	A => 100,     # Recurring Contribution
 	F => 100_000, # Final Fund Value
     r => 10,      # Interest Rate (%)
     n => 12,      # Number of Contributions per Year
@@ -33,11 +33,18 @@ vars = Dict(
 );
 
 # ╔═╡ 0d165976-c904-43f5-ae66-28c159e0e8c2
-solvefor = F;     # Guessed Variable (to be solved)
+solvefor = A;     # Guessed Variable (to be solved)
+
+# ╔═╡ 43fa6166-c9e4-4f1b-9e08-225ea9e64c60
+𝐹 = :(P * (1 + r/(100*n))^(n*t) +
+         A * ((1 + r/(100*n))^(n*t) - 1) / (r/(100*n))) |> latexify
 
 # ╔═╡ d2af2989-e169-4744-a3ca-2d363bd20816
 eq = F ~ P * (1 + r/(100*n))^(n*t) +
-         A * ((1 + r/(100*n))^(n*t) - 1) / (r/(100*n))
+         A * ((1 + r/(100*n))^(n*t) - 1) / (r/(100*n));
+
+# ╔═╡ efde5e12-4b0c-4aec-b368-529a8e81aedd
+println(𝐹)
 
 # ╔═╡ c2eb2df9-41d3-4220-9595-e3682f8a7e09
 md"# Equation Solver"
@@ -138,6 +145,7 @@ PLUTO_PROJECT_TOML_CONTENTS = """
 [deps]
 Chain = "8be319e6-bccf-4806-a6f7-6fae938471bc"
 Format = "1fa38f19-a742-5d3f-a2b9-30dd87b9d5f8"
+Latexify = "23fbe1c1-3f47-55db-b15f-69d7ec21a316"
 ModelingToolkit = "961ee093-0014-501f-94e3-6117800e7a78"
 NonlinearSolve = "8913a72c-1f9b-4ce2-8d82-65094dcecaec"
 Plots = "91a5bcdd-55d7-5caf-9e0b-520d859cae80"
@@ -145,6 +153,7 @@ Plots = "91a5bcdd-55d7-5caf-9e0b-520d859cae80"
 [compat]
 Chain = "~0.6.0"
 Format = "~1.3.7"
+Latexify = "~0.16.6"
 ModelingToolkit = "~9.14.0"
 NonlinearSolve = "~3.12.0"
 Plots = "~1.40.4"
@@ -154,9 +163,9 @@ Plots = "~1.40.4"
 PLUTO_MANIFEST_TOML_CONTENTS = """
 # This file is machine-generated - editing it directly is not advised
 
-julia_version = "1.11.3"
+julia_version = "1.11.4"
 manifest_format = "2.0"
-project_hash = "30b8465b12ded4efd58ea1e2cad3e1a65d7560ec"
+project_hash = "d33f1b4d9c166a0d82776d14c8ad0e2de9cfaf70"
 
 [[deps.ADTypes]]
 git-tree-sha1 = "e2478490447631aedba0823d4d7a80b2cc8cdb32"
@@ -1492,7 +1501,7 @@ version = "0.3.27+1"
 [[deps.OpenLibm_jll]]
 deps = ["Artifacts", "Libdl"]
 uuid = "05823500-19ac-5b8b-9628-191a04bc5112"
-version = "0.8.1+2"
+version = "0.8.1+4"
 
 [[deps.OpenSSL]]
 deps = ["BitFlags", "Dates", "MozillaCACerts_jll", "OpenSSL_jll", "Sockets"]
@@ -2557,7 +2566,9 @@ version = "1.4.1+2"
 # ╠═4b24c253-c50a-4e69-a0d6-313fb58dfbd4
 # ╟─12e51311-f0ba-4503-b942-c064bbd6630c
 # ╠═ef3bbde6-9410-45a0-9f04-3521359c0500
-# ╟─d2af2989-e169-4744-a3ca-2d363bd20816
+# ╟─43fa6166-c9e4-4f1b-9e08-225ea9e64c60
+# ╠═d2af2989-e169-4744-a3ca-2d363bd20816
+# ╠═efde5e12-4b0c-4aec-b368-529a8e81aedd
 # ╟─c2eb2df9-41d3-4220-9595-e3682f8a7e09
 # ╟─2fbf75a3-bc5c-4376-9c6a-39f96bd64cc8
 # ╟─2355ebad-3817-4131-8759-f5ff2d23e52f
