@@ -36,15 +36,12 @@ vars = Dict(
 solvefor = A;     # Guessed Variable (to be solved)
 
 # ╔═╡ 43fa6166-c9e4-4f1b-9e08-225ea9e64c60
-𝐹 = :(P * (1 + r/(100*n))^(n*t) +
+𝐹 = :(F = P * (1 + r/(100*n))^(n*t) +
          A * ((1 + r/(100*n))^(n*t) - 1) / (r/(100*n))) |> latexify
 
 # ╔═╡ d2af2989-e169-4744-a3ca-2d363bd20816
 eq = F ~ P * (1 + r/(100*n))^(n*t) +
          A * ((1 + r/(100*n))^(n*t) - 1) / (r/(100*n));
-
-# ╔═╡ efde5e12-4b0c-4aec-b368-529a8e81aedd
-println(𝐹)
 
 # ╔═╡ c2eb2df9-41d3-4220-9595-e3682f8a7e09
 md"# Equation Solver"
@@ -2568,7 +2565,6 @@ version = "1.4.1+2"
 # ╠═ef3bbde6-9410-45a0-9f04-3521359c0500
 # ╟─43fa6166-c9e4-4f1b-9e08-225ea9e64c60
 # ╠═d2af2989-e169-4744-a3ca-2d363bd20816
-# ╠═efde5e12-4b0c-4aec-b368-529a8e81aedd
 # ╟─c2eb2df9-41d3-4220-9595-e3682f8a7e09
 # ╟─2fbf75a3-bc5c-4376-9c6a-39f96bd64cc8
 # ╟─2355ebad-3817-4131-8759-f5ff2d23e52f
