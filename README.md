@@ -5,7 +5,7 @@ A [notebook](https://plutojl.org/) for solving the compound interest equation
 It can solve for any variable in the equation.
 
 
-**[CLICK HERE](https://nathanrboyer.github.io/PokemonPocketCardData/)**
+**[CLICK HERE](https://nathanrboyer.github.io/CompoundInterestCalculator.jl/)**
 to preview the notebook.
 Then click the button in the top-right corner to download and edit it.
 
